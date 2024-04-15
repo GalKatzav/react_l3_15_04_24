@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 export default function VipList() {
   const [vip_ar, setVipAr] = useState([]);
+  const [load, setLoad] = useState(true);
   useEffect(() => {
     doApi();
   }, []);
   const doApi = async () => {
     const url = "http://fs1.co.il/bus/vip_big.php";
     try {
+      setLoad(true);
       const resp = await fetch(url);
       const data = await resp.json();
       console.log(data);
       setVipAr(data);
+      setLoad(false);
     } catch (err) {
       console.log(err);
     }
@@ -20,6 +23,7 @@ export default function VipList() {
   return (
     <div className="container">
       <h1>Vip list:</h1>
+      {load && <h3>Loading...</h3>}
       <div className="row">
         {vip_ar.map((item) => {
           return (
