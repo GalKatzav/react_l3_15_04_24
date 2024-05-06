@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import VipList from "./pages/VipList";
 import VipInfo from "./pages/VipInfo";
+import Page404 from "./pages/Page404";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/vip" element={<VipList />} />
           <Route path="/vip/:rank" element={<VipInfo />} />
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
     </BrowserRouter>
