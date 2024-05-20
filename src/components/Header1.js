@@ -20,6 +20,9 @@ export default function Header1() {
               <li>
                 <Link to="/counter">Counter</Link>
               </li>
+              <li>
+                <Link to="/shop">Shopping</Link>
+              </li>
             </ul>
           </nav>
         </div>

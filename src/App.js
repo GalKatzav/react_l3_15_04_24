@@ -6,8 +6,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Page404 from "./pages/Page404";
 import CouterPage from "./pages/CouterPage";
-import { AppContext } from "./context/Context";
-import { ContextProvider } from "./context/Context";
+// import { AppContext } from "./context/Context";
+// import { ContextProvider } from "./context/Context";
+import ContextProvider from "./context/ContextShop";
+import ShopPage from "./pages/ShopPage";
 
 function App() {
   // יצרנו סטייט שישמש את הקונטסט וכך יהיה גלובלי
@@ -23,6 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/counter" element={<CouterPage />} />
+            <Route path="/shop" element={<ShopPage />} />
             <Route path="*" element={<Page404 />} />
           </Route>
         </Routes>
