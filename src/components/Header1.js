@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 export default function Header1() {
   return (
     <header className="container-fluid bg-warning">
@@ -17,7 +18,7 @@ export default function Header1() {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/vip">V.I.P</Link>
+                <Link to="/counter">Counter</Link>
               </li>
             </ul>
           </nav>

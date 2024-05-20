@@ -1,24 +1,34 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import VipList from "./pages/VipList";
-import VipInfo from "./pages/VipInfo";
 import Page404 from "./pages/Page404";
+import CouterPage from "./pages/CouterPage";
+import { AppContext } from "./context/Context";
+import { ContextProvider } from "./context/Context";
+
 function App() {
+  // יצרנו סטייט שישמש את הקונטסט וכך יהיה גלובלי
+  const [counter, setCounter] = useState(55);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/vip" element={<VipList />} />
-          <Route path="/vip/:rank" element={<VipInfo />} />
-          <Route path="*" element={<Page404 />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    // AppContext.Provider - עוטף את כל הקומפוינטות
+    // ויקבל פרופס בשם וויליו שכל מה שיהיה בתוכו יהיה גלובלי
+    // וניתן לשליפה בתוך הקומפנינטות
+    <ContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/counter" element={<CouterPage />} />
+            <Route path="*" element={<Page404 />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
+
 export default App;
