@@ -10,6 +10,12 @@ export default function ContextProvider({ children }) {
     { name: "Bamba", amount: 5, id: 3 },
   ]);
 
+  // ישמש אם להציג את טופס העריכה בפופ אפ
+  const [showEdit, setShowEdit] = useState(false);
+
+  // ישמש לקבלת פרטים על הפריט שנרצה לערך
+  const [currentEdit, setCurrentEdit] = useState({});
+
   useLayoutEffect(() => {
     if (localStorage.getItem("shop_ar")) {
       setShopAr(JSON.parse(localStorage.getItem("shop_ar")));
@@ -37,12 +43,32 @@ export default function ContextProvider({ children }) {
     localStorage.setItem("shop_ar", JSON.stringify([filter_ar]));
   };
 
+  // פונקציית עריכה של פריט
+  const updateProduct = (_updateItem, _id) => {
+    const map_ar = shop_ar.map((item) => {
+      // אם מזהה שהאיי די שווה לאיי די של הפריט שאני רוצה
+      // לערוך יחזיר למערך החדש את הפריט עם המאפיינים שנערכו
+      // ולא את האובייקט עצמו כפי שהיה לפני השינוי
+      if (item.id == _id) {
+        return _updateItem;
+      }
+      return item;
+    });
+    setShopAr(map_ar);
+    localStorage.setItem("shop_ar", JSON.stringify([map_ar]));
+  };
+
   // כל מה בצריך להיות בסטור הגלובלי ייכנס לתוך האובייקט גלובל ואל שהקונטקסט ייזן בתוך הפרופ ווליו שלו
   const globalVal = {
     shop_ar,
     addProduct,
     resetList,
     deleteProduct,
+    showEdit,
+    setShowEdit,
+    currentEdit,
+    setCurrentEdit,
+    updateProduct,
   };
 
   return (
