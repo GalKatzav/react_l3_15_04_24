@@ -14,7 +14,7 @@ export default function ShopForm() {
     const newItem = {
       name: nameRef.current.value,
       amount: amountRef.current.value,
-      id: Date.now(),
+      id: Date.now(), // איי די ייחודי - זמן יוניקס במילי שניות
     };
     if (newItem.name.length > 0) {
       addProduct(newItem);
