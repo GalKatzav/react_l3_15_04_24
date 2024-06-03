@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BiSolidHomeHeart } from "react-icons/bi";
 
 export default function Header1() {
   return (
@@ -12,7 +13,12 @@ export default function Header1() {
           <nav className="col-auto">
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                {/* <Link to="/">Home</Link> */}
+                <Link to="/">
+                  <h2>
+                    <BiSolidHomeHeart />
+                  </h2>
+                </Link>
               </li>
               <li>
                 <Link to="/about">About</Link>
@@ -22,6 +28,12 @@ export default function Header1() {
               </li>
               <li>
                 <Link to="/shop">Shopping</Link>
+              </li>
+              <li>
+                <Link to="/form1">Form1</Link>
+              </li>
+              <li>
+                <Link to="/icons">Icons</Link>
               </li>
             </ul>
           </nav>
